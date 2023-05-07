@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import * as Controller from './controllers/Controller.js'
 
-const dataBaseURL = 'mongodb+srv://admin:eeeeee@clustercitations.isavmzv.mongodb.net/scholarData?retryWrites=true&w=majority'
+//const dataBaseURL = 'mongodb+srv://admin:eeeeee@clustercitations.isavmzv.mongodb.net/scholarData?retryWrites=true&w=majority'
 mongoose.connect(dataBaseURL)
 .catch(error => console.log(`Database connection error\n${error}`))
 
