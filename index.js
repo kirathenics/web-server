@@ -13,9 +13,9 @@ app.use(cors())
 
 // создать папку controllers и routes
 
-app.get('/', (request, response) => {
+/*app.get('/', (request, response) => {
     response.send('Hello world');
-})
+})*/
 
 app.get('/profiles', Controller.getProfiles)
 app.get('/profiles/filter', Controller.getProfilesFiltered)
@@ -27,9 +27,9 @@ app.get('/faculties/charts', Controller.getFacultiesCharts)
 app.get('/departments/charts', Controller.getDepartmentsCharts)
 app.get('/titles/charts', Controller.getTitlesCharts)
 
-app.get('/faculties/charts', Controller.getFacultiesGraphs)
-app.get('/departments/charts', Controller.getDepartmentsGraphs)
-app.get('/titles/charts', Controller.getTitlesGraphs)
+app.get('/faculties/graphs', Controller.getFacultiesGraphs)
+app.get('/departments/graphs', Controller.getDepartmentsGraphs)
+app.get('/titles/graphs', Controller.getTitlesGraphs)
 
 app.listen(4444, (err) => {
     if (err) return console.log(err)
