@@ -1,8 +1,25 @@
 import { ProfileSchema, FacultySchema, DepartmentSchema, TitleSchema } from '../models/index.js'
 
+export const getTop3 = async (request, response) => {
+    try {
+        //const profiles = await ProfileSchema.find({}).select('-citationArray -faculty -department -title -hIndex -i10Index').sort({'hIndex': -1 }).limit(3)
+        const profiles = await ProfileSchema.find().select('_id fullName profileLink imageLink cited __v').sort({'cited': -1 }).limit(3)
+        if (!profiles) return response.status(400).json({
+            message: 'Данные не найдены'
+        })
+
+        response.status(200).json(profiles)
+    } catch (error) {
+        console.log(error)
+        response.status(500).send({
+            message: 'Не удалось считать данные'
+        })
+    }
+}
+
 export const getProfiles = async (request, response) => {
     try {
-        const profiles = await ProfileSchema.find({}).select('-citationArray').sort({'hIndex': -1 })
+        const profiles = await ProfileSchema.find().select('-citationArray').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -46,7 +63,7 @@ export const getProfilesFiltered = async (request, response) => {
 
 export const getFaculties = async (request, response) => {
     try {
-        const profiles = await FacultySchema.find({}).select('-citationArray').sort({'hIndex': -1 })
+        const profiles = await FacultySchema.find().select('-citationArray').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -63,7 +80,7 @@ export const getFaculties = async (request, response) => {
 
 export const getDepartments = async (request, response) => {
     try {
-        const profiles = await DepartmentSchema.find({}).select('-citationArray').sort({'hIndex': -1 })
+        const profiles = await DepartmentSchema.find().select('-citationArray').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -80,7 +97,7 @@ export const getDepartments = async (request, response) => {
 
 export const getTitles = async (request, response) => {
     try {
-        const profiles = await TitleSchema.find({}).select('-citationArray').sort({'hIndex': -1 })
+        const profiles = await TitleSchema.find().select('-citationArray').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -97,7 +114,7 @@ export const getTitles = async (request, response) => {
 
 export const getFacultiesCharts = async (request, response) => {
     try {
-        const profiles = await FacultySchema.find({}).select('name cited hIndex').sort({'hIndex': -1 })
+        const profiles = await FacultySchema.find().select('name cited hIndex').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -114,7 +131,7 @@ export const getFacultiesCharts = async (request, response) => {
 
 export const getDepartmentsCharts = async (request, response) => {
     try {
-        const profiles = await DepartmentSchema.find({}).select('name cited hIndex').sort({'hIndex': -1 })
+        const profiles = await DepartmentSchema.find().select('name cited hIndex').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -131,7 +148,7 @@ export const getDepartmentsCharts = async (request, response) => {
 
 export const getTitlesCharts = async (request, response) => {
     try {
-        const profiles = await TitleSchema.find({}).select('name cited hIndex').sort({'hIndex': -1 })
+        const profiles = await TitleSchema.find().select('name cited hIndex').sort({'hIndex': -1 })
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -148,7 +165,7 @@ export const getTitlesCharts = async (request, response) => {
 
 export const getFacultiesGraphs = async (request, response) => {
     try {
-        const profiles = await FacultySchema.find({}).select('name citationArray')
+        const profiles = await FacultySchema.find().select('name citationArray')
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -165,7 +182,7 @@ export const getFacultiesGraphs = async (request, response) => {
 
 export const getDepartmentsGraphs = async (request, response) => {
     try {
-        const profiles = await DepartmentSchema.find({}).select('name citationArray')
+        const profiles = await DepartmentSchema.find().select('name citationArray')
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
@@ -182,7 +199,7 @@ export const getDepartmentsGraphs = async (request, response) => {
 
 export const getTitlesGraphs = async (request, response) => {
     try {
-        const profiles = await TitleSchema.find({}).select('name citationArray')
+        const profiles = await TitleSchema.find().select('name citationArray')
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
