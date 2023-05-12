@@ -17,6 +17,7 @@ app.use(cors())
     response.send('Hello world');
 })*/
 
+app.get('/top3', Controller.getTop3)
 app.get('/profiles', Controller.getProfiles)
 app.get('/profiles/filter', Controller.getProfilesFiltered)
 app.get('/faculties', Controller.getFaculties)
