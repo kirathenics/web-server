@@ -36,11 +36,11 @@ export const getProfiles = async (request, response) => {
 
 export const getProfilesFiltered = async (request, response) => {
     try {
-        const { facultiesArr, departmentsArr, titlesArr } = await request.body
+        const { arrFaculties, arrDepartments, arrTitles } = await request.body
         let query = {}
-        if (facultiesArr.length !== 0) query['faculty'] = { $in: facultiesArr }
-        if (departmentsArr.length !== 0) query['department'] = { $in: departmentsArr }
-        if (titlesArr.length !== 0) query['title'] = { $in: titlesArr }
+        if (arrFaculties.length !== 0) query['faculty'] = { $in: facultiesArr }
+        if (arrDepartments.length !== 0) query['department'] = { $in: departmentsArr }
+        if (arrTitles.length !== 0) query['title'] = { $in: titlesArr }
         /*console.log(arr1)
         console.log(arr1.length)
         console.log(arr2)
