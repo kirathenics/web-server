@@ -11,11 +11,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-// создать папку controllers и routes
-
-/*app.get('/', (request, response) => {
-    response.send('Hello world');
-})*/
 
 app.get('/top3', Controller.getTop3)
 app.get('/profiles', Controller.getProfiles)
@@ -25,9 +20,9 @@ app.get('/faculties', Controller.getFaculties)
 app.get('/departments', Controller.getDepartments)
 app.get('/titles', Controller.getTitles)
 
-app.get('/faculties/charts', Controller.getFacultiesCharts)
-app.get('/departments/charts', Controller.getDepartmentsCharts)
-app.get('/titles/charts', Controller.getTitlesCharts)
+app.get('/faculties/pies', Controller.getFacultiesPies)
+app.get('/departments/pies', Controller.getDepartmentsPies)
+app.get('/titles/pies', Controller.getTitlesPies)
 
 app.get('/faculties/graphs', Controller.getFacultiesGraphs)
 app.get('/departments/graphs', Controller.getDepartmentsGraphs)
@@ -35,5 +30,5 @@ app.get('/titles/graphs', Controller.getTitlesGraphs)
 
 app.listen(4444, (err) => {
     if (err) return console.log(err)
-    console.log('Server OK')
+    console.log('Server started!')
 })
