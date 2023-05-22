@@ -161,7 +161,7 @@ export const getTitlesPies = async (request, response) => {
     }
 }
 
-export const getFacultiesGraphs = async (request, response) => {
+export const getFacultiesLines = async (request, response) => {
     try {
         const profiles = await FacultySchema.find().select('name citationArray')
 
@@ -178,7 +178,7 @@ export const getFacultiesGraphs = async (request, response) => {
     }
 }
 
-export const getDepartmentsGraphs = async (request, response) => {
+export const getDepartmentsLines = async (request, response) => {
     try {
         const profiles = await DepartmentSchema.find().select('name citationArray')
 
@@ -195,7 +195,7 @@ export const getDepartmentsGraphs = async (request, response) => {
     }
 }
 
-export const getTitlesGraphs = async (request, response) => {
+export const getTitlesLines = async (request, response) => {
     try {
         const profiles = await TitleSchema.find().select('name citationArray')
 

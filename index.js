@@ -24,9 +24,9 @@ app.get('/faculties/pies', Controller.getFacultiesPies)
 app.get('/departments/pies', Controller.getDepartmentsPies)
 app.get('/titles/pies', Controller.getTitlesPies)
 
-app.get('/faculties/graphs', Controller.getFacultiesGraphs)
-app.get('/departments/graphs', Controller.getDepartmentsGraphs)
-app.get('/titles/graphs', Controller.getTitlesGraphs)
+app.get('/faculties/lines', Controller.getFacultiesLines)
+app.get('/departments/lines', Controller.getDepartmentsLines)
+app.get('/titles/lines', Controller.getTitlesLines)
 
 app.listen(4444, (err) => {
     if (err) return console.log(err)
