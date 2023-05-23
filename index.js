@@ -1,10 +1,11 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import dotenv from 'dotenv'
 import * as Controller from './controllers/Controller.js'
 
-const dataBaseURL = 'mongodb+srv://admin:eeeeee@clustercitations.isavmzv.mongodb.net/scholarData?retryWrites=true&w=majority'
-mongoose.connect(dataBaseURL)
+dotenv.config()
+mongoose.connect(process.env.DB_CONN)
 .catch(error => console.log(`Database connection error\n${error}`))
 
 const app = express()
@@ -28,7 +29,7 @@ app.get('/faculties/lines', Controller.getFacultiesLines)
 app.get('/departments/lines', Controller.getDepartmentsLines)
 app.get('/titles/lines', Controller.getTitlesLines)
 
-app.listen(4444, (err) => {
+app.listen(process.env.PORT, (err) => {
     if (err) return console.log(err)
     console.log('Server started!')
 })
