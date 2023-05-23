@@ -59,15 +59,32 @@ export const getProfilesFiltered = async (request, response) => {
     }
 }
 
-export const getFaculties = async (request, response) => {
+export const getProfilesHIndex = async (request, response) => {
     try {
-        const profiles = await FacultySchema.find().select('-citationArray').sort({'hIndex': -1 })
+        const profiles = await ProfileSchema.find().select('hIndex')
 
         if (!profiles) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
         response.status(200).json(profiles)
+    } catch (error) {
+        console.log(error)
+        response.status(500).send({
+            message: 'Не удалось считать данные'
+        })
+    }
+}
+
+export const getFaculties = async (request, response) => {
+    try {
+        const faculties = await FacultySchema.find().select('-citationArray').sort({'hIndex': -1 })
+
+        if (!faculties) return response.status(400).json({
+            message: 'Данные не найдены'
+        })
+
+        response.status(200).json(faculties)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -78,13 +95,13 @@ export const getFaculties = async (request, response) => {
 
 export const getDepartments = async (request, response) => {
     try {
-        const profiles = await DepartmentSchema.find().select('-citationArray').sort({'hIndex': -1 })
+        const departments = await DepartmentSchema.find().select('-citationArray').sort({'hIndex': -1 })
 
-        if (!profiles) return response.status(400).json({
+        if (!departments) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(departments)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -95,13 +112,13 @@ export const getDepartments = async (request, response) => {
 
 export const getTitles = async (request, response) => {
     try {
-        const profiles = await TitleSchema.find().select('-citationArray').sort({'hIndex': -1 })
+        const titles = await TitleSchema.find().select('-citationArray').sort({'hIndex': -1 })
 
-        if (!profiles) return response.status(400).json({
+        if (!titles) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(titles)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -112,13 +129,13 @@ export const getTitles = async (request, response) => {
 
 export const getFacultiesPies = async (request, response) => {
     try {
-        const profiles = await FacultySchema.find().select('name cited hIndex').sort({'hIndex': -1 })
+        const faculties = await FacultySchema.find().select('name cited hIndex').sort({'hIndex': -1 })
 
-        if (!profiles) return response.status(400).json({
+        if (!faculties) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(faculties)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -129,13 +146,13 @@ export const getFacultiesPies = async (request, response) => {
 
 export const getDepartmentsPies = async (request, response) => {
     try {
-        const profiles = await DepartmentSchema.find().select('name cited hIndex').sort({'hIndex': -1 })
+        const departments = await DepartmentSchema.find().select('name cited hIndex').sort({'hIndex': -1 })
 
-        if (!profiles) return response.status(400).json({
+        if (!departments) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(departments)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -146,13 +163,13 @@ export const getDepartmentsPies = async (request, response) => {
 
 export const getTitlesPies = async (request, response) => {
     try {
-        const profiles = await TitleSchema.find().select('name cited hIndex').sort({'hIndex': -1 })
+        const titles = await TitleSchema.find().select('name cited hIndex').sort({'hIndex': -1 })
 
-        if (!profiles) return response.status(400).json({
+        if (!titles) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(titles)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -163,13 +180,13 @@ export const getTitlesPies = async (request, response) => {
 
 export const getFacultiesLines = async (request, response) => {
     try {
-        const profiles = await FacultySchema.find().select('name citationArray')
+        const faculties = await FacultySchema.find().select('name citationArray')
 
-        if (!profiles) return response.status(400).json({
+        if (!faculties) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(faculties)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -180,13 +197,13 @@ export const getFacultiesLines = async (request, response) => {
 
 export const getDepartmentsLines = async (request, response) => {
     try {
-        const profiles = await DepartmentSchema.find().select('name citationArray')
+        const departments = await DepartmentSchema.find().select('name citationArray')
 
-        if (!profiles) return response.status(400).json({
+        if (!departments) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(departments)
     } catch (error) {
         console.log(error)
         response.status(500).send({
@@ -197,13 +214,13 @@ export const getDepartmentsLines = async (request, response) => {
 
 export const getTitlesLines = async (request, response) => {
     try {
-        const profiles = await TitleSchema.find().select('name citationArray')
+        const titles = await TitleSchema.find().select('name citationArray')
 
-        if (!profiles) return response.status(400).json({
+        if (!titles) return response.status(400).json({
             message: 'Данные не найдены'
         })
 
-        response.status(200).json(profiles)
+        response.status(200).json(titles)
     } catch (error) {
         console.log(error)
         response.status(500).send({
