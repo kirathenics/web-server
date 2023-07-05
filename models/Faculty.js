@@ -22,7 +22,7 @@ const FacultySchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    /*citationArray: [
+    citationArray: [
         {
             year: {
                 type: Number,
@@ -33,7 +33,7 @@ const FacultySchema = new mongoose.Schema({
                 default: 0,
             }
         }
-    ],*/
+    ],
 }, { collection: 'faculties' })
 
 export default mongoose.model('FacultySchema', FacultySchema)
